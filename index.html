@@ -1,0 +1,56 @@
+<html ng-app="LightsOut">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The New Lights Out</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+<body ng-controller="MainController as mc">
+    <!--Form for grid size start-->
+    <form ng-submit="mc.makegrid(g)">
+        <input ng-model="g" type="number" placeholder="number of cells across">
+        <button>make grid</button>
+    </form>
+    <!--Grid size end-->
+    <!--Form for grid cell selection start-->
+    <!--<form ng-submit="selectCell(x,y)">
+        <input type="number" placeholder="enter column">
+        <input type="number" placeholder="enter row">
+        <button>Select Cell</button>
+    </form>-->
+    <!--grid cell selection end-->
+    <!--display grid-->
+    <!--container cell must be changed for size to account for wrap-->
+    <!--<div class="gridLimit col-sm-6 col-sm-offset-3">-->
+        <!--end of container for wrap-->
+        <div class="row" ng-repeat="row in mc.grid" ngclass>
+          <div class="col" ng-repeat="cell in row">
+              <div class="cell" ng-class="{'lit': cell.lit}" ng-click="mc.activate(cell)">row:{{cell.row}} col:{{cell.col}}</div>
+                <!--Column:{{cell.colum}} Row:{{cell.row}}-->
+          </div>
+           
+            </div>
+    <!--</div>-->
+    <!--end display grid-->
+
+
+
+
+    <!--Load jquery-->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+    <!--Load Angular-->
+    <script src="bower_components/angular/angular.js"></script>
+
+    <!--Load bootstrap-->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!--load app-->
+    <!--<script src="app/init.js"></script>-->
+    <script src="app/controller/maincontroller.js"></script>
+
+</body>
+
+</html>

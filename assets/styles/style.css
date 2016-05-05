@@ -1,0 +1,22 @@
+/*.gridLimit{
+    width:500px;
+}*/
+.row{
+    
+    text-align: center;
+}
+.cell{
+    border: 2px solid black;
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+}
+.cell:hover{
+    background-color: orange
+}
+.col{
+    display: inline-block;
+    }
+    .lit{
+        background-color: #092;
+    }

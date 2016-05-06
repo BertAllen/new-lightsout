@@ -1,16 +1,18 @@
 angular.module('LightsOut', []).controller('MainController', function () {
     var mc = this;
+    mc.mode = "one";
+    var colorMode = 1;
     mc.makegrid = function (g) {
         if (g < 0) {
             g = g * -1;
-        } else if (g = 0) {
+        } else if (g == 0) {
             return;
         }
         mc.grid = [];
         for (var x = 0; x < g; x++) {
             mc.grid[x] = [];
             for (var y = (g - x - 1); y >= 0; y--) {
-                mc.grid[x][y] = { row: x, col: y, lit: false, neighbors: [] };
+                mc.grid[x][y] = { row: x, col: y, lit: 0, neighbors: [] };
             }
         }
         for (var a = 0; a < mc.grid.length; a++) {
@@ -36,19 +38,40 @@ angular.module('LightsOut', []).controller('MainController', function () {
         }
     }
     mc.activate = function (cell) {
-        cell.lit = !cell.lit;
+        if (mc.mode == "two") {
+            colorMode = 2;
+        } else {
+            colorMode = 1;
+        }
+        cell.lit++;
+        if (cell.lit > colorMode) {
+            cell.lit = 0;
+        }
         cell.neighbors.forEach(function (nab) {
-            nab.lit = !nab.lit;
+            nab.lit++;
+            if (nab.lit > colorMode) {
+                nab.lit = 0;
+            }
         })
     }
     mc.randgrid = function () {
         mc.grid.forEach(function (row) {
             row.forEach(function (cell) {
                 var flipper = Math.random();
-                if (flipper > .5) {
-                    cell.lit = true;
+                if (mc.mode == "two") {
+                    if (flipper > .6) {
+                        cell.lit = 2;
+                    } else if (flipper > .3) {
+                        cell.lit = 1;
+                    } else {
+                        cell.lit = 0;
+                    }
                 } else {
-                    cell.lit = false;
+                    if (flipper > .5) {
+                        cell.lit = 1;
+                    } else {
+                        cell.lit = 0;
+                    }
                 }
             })
         })

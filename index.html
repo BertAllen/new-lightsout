@@ -8,14 +8,14 @@
 </head>
 
 <body ng-controller="MainController as mc">
-    <!--<form ng-submit="mc.makegrid(g)">-->
         <input ng-model="g" type="number" placeholder="base number of cells">
         <button ng-click="mc.makegrid(g)">Make Pyramid</button>
-    <!--</form>-->
     <button ng-click="mc.randgrid()">Randomize</button>
+    <label for="color-mode">Number of colors: One<input name="color-mode" type="radio" value="one" ng-model="mc.mode"> Two<input name="color-mode" type="radio" value="two" ng-model="mc.mode"></label>
+    
     <div class="row" ng-repeat="row in mc.grid" ngclass>
         <div class="col" ng-repeat="cell in row">
-            <div class="cell" ng-class="{'lit': cell.lit}" ng-click="mc.activate(cell)"></div>
+            <div class="cell" ng-class="{'lit1': cell.lit==1, 'lit2': cell.lit==2}" ng-class="{'lit2': cell.lit==2}" ng-click="mc.activate(cell)"></div>
         </div>
     </div>
     <script src="bower_components/jquery/dist/jquery.js"></script>

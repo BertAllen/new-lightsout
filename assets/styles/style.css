@@ -15,6 +15,9 @@
 .col{
     display: inline-block;
 }
-.lit{
-    background-color: #092;
+.lit1{
+    background-color: #082;
+}
+.lit2{
+    background-color: #0d2
 }

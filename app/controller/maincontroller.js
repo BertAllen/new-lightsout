@@ -41,4 +41,16 @@ angular.module('LightsOut', []).controller('MainController', function () {
             nab.lit = !nab.lit;
         })
     }
+    mc.randgrid = function () {
+        mc.grid.forEach(function (row) {
+            row.forEach(function (cell) {
+                var flipper = Math.random();
+                if (flipper > .5) {
+                    cell.lit = true;
+                } else {
+                    cell.lit = false;
+                }
+            })
+        })
+    }
 });

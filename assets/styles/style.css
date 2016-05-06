@@ -1,8 +1,4 @@
-/*.gridLimit{
-    width:500px;
-}*/
 .row{
-    
     text-align: center;
 }
 .cell{
@@ -10,13 +6,15 @@
     width: 60px;
     height: 60px;
     vertical-align: middle;
+    border-radius: 50%;
+    margin-left: 7px;
 }
 .cell:hover{
     background-color: orange
 }
 .col{
     display: inline-block;
-    }
-    .lit{
-        background-color: #092;
-    }
+}
+.lit{
+    background-color: #092;
+}
